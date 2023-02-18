@@ -1,5 +1,4 @@
 .docs/api/openapi.yaml
-.openapi-generator-ignore
 Dockerfile
 README.md
 go.mod
@@ -8,4 +7,5 @@ handlers/container.go
 main.go
 models/hello-world.go
 models/model_error.go
+models/model_patch_pets_pet_id_request.go
 models/model_pet.go

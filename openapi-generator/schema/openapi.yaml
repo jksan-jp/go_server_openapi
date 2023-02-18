@@ -1,11 +1,13 @@
-openapi: "3.0.0"
+openapi: 3.0.0
+x-stoplight:
+  id: yozmhviuk4jjk
 info:
   version: 1.0.0
   title: Swagger Petstore
   license:
     name: MIT
 servers:
-  - url: http://127.0.0.1:8080/v1
+  - url: 'http://127.0.0.1:8080/v1'
 paths:
   /pets:
     get:
@@ -31,15 +33,15 @@ paths:
               schema:
                 type: string
           content:
-            application/json:    
+            application/json:
               schema:
-                $ref: "#/components/schemas/Pets"
+                $ref: '#/components/schemas/Pets'
         default:
           description: unexpected error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: '#/components/schemas/Error'
     post:
       summary: Create a pet
       operationId: createPets
@@ -53,33 +55,42 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
-  /pets/{petId}:
+                $ref: '#/components/schemas/Error'
+  '/pets/{petID}':
+    parameters:
+      - schema:
+          type: string
+        name: petID
+        in: path
+        required: true
     get:
-      summary: Info for a specific pet
-      operationId: showPetById
-      tags:
-        - pets
-      parameters:
-        - name: petId
-          in: path
-          required: true
-          description: The id of the pet to retrieve
-          schema:
-            type: string
+      summary: ''
+      operationId: get-pets-petID
       responses:
         '200':
-          description: Expected response to a valid request
+          description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Pet"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+                $ref: '#/components/schemas/Pet'
+      tags:
+        - pets
+    patch:
+      summary: ''
+      operationId: patch-pets-petID
+      responses:
+        '204':
+          description: No Content
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      tags:
+        - pets
 components:
   schemas:
     Pet:
@@ -99,7 +110,7 @@ components:
       type: array
       maxItems: 100
       items:
-        $ref: "#/components/schemas/Pet"
+        $ref: '#/components/schemas/Pet'
     Error:
       type: object
       required:

@@ -20,11 +20,14 @@ func main() {
 	// CreatePets - Create a pet
 	e.POST("/v1/pets", c.CreatePets)
 
+	// GetPetsPetID - 
+	e.GET("/v1/pets/:petID", c.GetPetsPetID)
+
 	// ListPets - List all pets
 	e.GET("/v1/pets", c.ListPets)
 
-	// ShowPetById - Info for a specific pet
-	e.GET("/v1/pets/:petId", c.ShowPetById)
+	// PatchPetsPetID - 
+	e.PATCH("/v1/pets/:petID", c.PatchPetsPetID)
 
 
 	// Start server

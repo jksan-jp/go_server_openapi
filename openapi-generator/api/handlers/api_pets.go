@@ -13,6 +13,14 @@ func (c *Container) CreatePets(ctx echo.Context) error {
 }
 
 
+// GetPetsPetID - 
+func (c *Container) GetPetsPetID(ctx echo.Context) error {
+    return ctx.JSON(http.StatusOK, models.HelloWorld {
+        Message: "Hello World",
+    })
+}
+
+
 // ListPets - List all pets
 func (c *Container) ListPets(ctx echo.Context) error {
     return ctx.JSON(http.StatusOK, models.HelloWorld {
@@ -21,8 +29,8 @@ func (c *Container) ListPets(ctx echo.Context) error {
 }
 
 
-// ShowPetById - Info for a specific pet
-func (c *Container) ShowPetById(ctx echo.Context) error {
+// PatchPetsPetID - 
+func (c *Container) PatchPetsPetID(ctx echo.Context) error {
     return ctx.JSON(http.StatusOK, models.HelloWorld {
         Message: "Hello World",
     })

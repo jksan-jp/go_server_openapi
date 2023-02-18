@@ -5,7 +5,7 @@ info:
   title: Swagger Petstore
   version: 1.0.0
 servers:
-- url: http://petstore.swagger.io/v1
+- url: http://127.0.0.1:8080/v1
 paths:
   /pets:
     get:
@@ -58,14 +58,13 @@ paths:
       summary: Create a pet
       tags:
       - pets
-  /pets/{petId}:
+  /pets/{petID}:
     get:
-      operationId: showPetById
+      operationId: get-pets-petID
       parameters:
-      - description: The id of the pet to retrieve
-        explode: false
+      - explode: false
         in: path
-        name: petId
+        name: petID
         required: true
         schema:
           type: string
@@ -76,14 +75,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Pet'
-          description: Expected response to a valid request
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: unexpected error
-      summary: Info for a specific pet
+          description: OK
+      summary: ""
+      tags:
+      - pets
+    patch:
+      operationId: patch-pets-petID
+      parameters:
+      - explode: false
+        in: path
+        name: petID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/patch_pets_petID_request'
+      responses:
+        "204":
+          description: No Content
+      summary: ""
       tags:
       - pets
 components:
@@ -121,3 +135,10 @@ components:
       - code
       - message
       type: object
+    patch_pets_petID_request:
+      properties:
+        name:
+          type: string
+      type: object
+x-stoplight:
+  id: yozmhviuk4jjk
